@@ -1,0 +1,28 @@
+{
+  "name": "sand-sqlite",
+  "version": "0.0.0",
+  "description": "Sand Grain for SQLite",
+  "main": "sqlite.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/SandJS/sqlite.git"
+  },
+  "keywords": [
+    "sand",
+    "sqlite",
+    "grain"
+  ],
+  "author": "Adam Jaso",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/SandJS/sqlite/issues"
+  },
+  "homepage": "https://github.com/SandJS/sqlite#readme",
+  "dependencies": {
+    "sand-grain": "^1.1.1",
+    "sqlite3": "^3.1.3"
+  }
+}
