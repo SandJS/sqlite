@@ -20,7 +20,8 @@ class SQLite extends SandGrain {
     this.newClient()
       .then(client => {
         this.db = client;
-        this.config.init(client, done);
+        // this.config.init(client, done);
+        done();
       })
       .catch(err => done)
   }
@@ -66,12 +67,14 @@ class SQLite extends SandGrain {
     })
   }
 
-  newClient(filename, mode) {
+  newClient(config) {
+    config = config || {};
     return new Promise((resolve, reject) => {
       let db;
 
-      filename = filename || this.config.filename;
-      mode = mode || this.config.mode;
+      let filename = config.filename || this.config.filename;
+      let mode = config.mode || this.config.mode;
+      let init = config.init || this.config.init;
 
       if (filename) {
         db = new sqlite3.Database(filename, callback);
@@ -87,7 +90,16 @@ class SQLite extends SandGrain {
         if (err) {
           return reject(err);
         }
-        resolve(db);
+        if ('function' == typeof init) {
+          init(db, (err) => {
+            if (err) {
+              return reject(err);
+            }
+            resolve(db);
+          });
+        } else {
+          resolve(db);
+        }
       }
     });
   }
