@@ -66,11 +66,11 @@ class SQLite extends SandGrain {
     })
   }
 
-  newClient(mode) {
+  newClient(filename, mode) {
     return new Promise((resolve, reject) => {
       let db;
 
-      let filename = this.config.filename;
+      filename = filename || this.config.filename;
       mode = mode || this.config.mode;
 
       if (filename) {
