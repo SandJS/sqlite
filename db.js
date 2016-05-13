@@ -1,5 +1,7 @@
 "use strict";
 
+const sqlite3 = require('sqlite3');
+
 class DB {
   constructor(db, config) {
     this.db = db;
