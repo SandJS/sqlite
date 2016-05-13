@@ -25,7 +25,7 @@ class SQLite extends SandGrain {
         // this.config.init(client, done);
         done();
       })
-      .catch(err => done)
+      .catch(done)
   }
 
   shutdown(done) {
