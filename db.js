@@ -41,6 +41,17 @@ class DB {
     })
   }
 
+  exec(query) {
+    return new Promise((resolve, reject) => {
+      this.db.exec(query, err => {
+        if (err) {
+          return reject(err);
+        }
+        resolve();
+      });
+    });
+  }
+
   close() {
     return new Promise((resolve, reject) => {
       this.db.close(err => {
