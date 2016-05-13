@@ -22,7 +22,6 @@ class SQLite extends SandGrain {
     this.newClient()
       .then(client => {
         this.db = client;
-        // this.config.init(client, done);
         done();
       })
       .catch(done)

@@ -41,6 +41,17 @@ class DB {
     })
   }
 
+  loadExtension(filename) {
+    return new Promise((resolve, reject) => {
+      this.db.loadExtension(filename, err => {
+        if (err) {
+          return reject(err);
+        }
+        resolve();
+      });
+    });
+  }
+
   exec(query) {
     return new Promise((resolve, reject) => {
       this.db.exec(query, err => {
