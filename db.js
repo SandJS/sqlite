@@ -10,7 +10,7 @@ class DB {
 
   query(query, params) {
     return new Promise((resolve, reject) => {
-
+      query = query.trim();
       if (/^select/i.test(query)) {
         this.db.all(query, params, (err, rows) => {
           if (err) {
@@ -32,6 +32,7 @@ class DB {
 
   selectOne(query, params) {
     return new Promise((resolve, reject) => {
+      query = query.trim();
       this.db.get(query, params, (err, row) => {
         if (err) {
           return reject(err);
